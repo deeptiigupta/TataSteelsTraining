@@ -1,0 +1,119 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+#loop over a sequence
+for( count in 1:10   ){
+  cat(count," ")
+}
+```
+
+
+```{r}
+#take 2 steps at a time
+for( count in seq(1,10,2)   ){
+  cat(count,"\n")
+}
+```
+
+
+```{r}
+#take 2 steps at a time
+for( count in seq(10,1,-1)   ){
+  cat(count," ")
+}
+```
+
+
+```{r}
+
+v1<-c(10,23.4,50,60)
+for( element in v1   ){
+  cat(element," ")
+}
+```
+
+
+```{r}
+*
+* *
+* * *
+* * * *
+```
+
+
+```{r}
+
+n1<-1 #initial
+
+while( n1 < 5){
+  cat(n1," ")
+  n1<-n1+1
+}
+```
+```{r}
+#take a value from the user. Print all number between 1 and the user provided value
+```
+```{r}
+#print the square of all numbers between 10 and 20 by using a while loop
+
+```
+
+
+```{r}
+#repeat
+
+n1<-10
+
+repeat{
+  cat(n1," ")
+  if(n1 > 5)
+    break
+}
+```
+```{r}
+#print hello. repeat until user says stop!
+
+repeat{
+  cat("hello","\n")
+  if ( readline() =='stop' )
+    break
+}
+```
+
+
+```{r}
+#looping over matrix
+
+m1<-rbind(c(1,2,3),c(4,5,6),c(7,8,9))
+m1
+dim(m1)
+```
+```{r}
+for(row in 1:dim(m1)[1]){
+  for(col in 1:dim(m1)[2]){
+    cat( m1[row, col]," "   )
+  }
+}
+```
+
+
+```{r}
+for( count in 1:10 ){
+  cat(count," ")
+  if(count > 5)
+    break
+}
+
+```
+```{r}
+for( count in 1:10 ){
+  if(count == 5)
+    next
+  cat(count," ")
+
+}
+```
+

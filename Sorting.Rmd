@@ -1,0 +1,84 @@
+---
+title: "Sorting"
+output: html_notebook
+---
+```{r}
+
+df<-read.csv("~/DataSets/Titanic.csv",sep = ",",header = T,na.strings = c('') )
+
+df$Gender<-as.factor(df$Gender) #type conversion into factor
+df$Embarked<-as.factor(df$Embarked) #type conversion into factor
+df$Pclass<-as.factor(df$Pclass) #type conversion into factor
+df$SibSp<-as.factor(df$SibSp) #type conversion into factor
+df$Parch<-as.factor(df$Parch) #type conversion into factor
+df$Survived<-as.factor(df$Survived) #type conversion into factor
+
+df
+```
+
+
+```{r}
+
+df %>% arrange(desc(Age))
+```
+
+
+```{r}
+df %>% arrange(Age)
+
+```
+
+
+```{r}
+#sort the data according to ascending order of Age and descending order of Fare
+df %>% arrange( Age, desc(Fare)  )
+```
+
+
+```{r}
+#group dataset according to Pclass. Find the average Fare in each category and sort the result in descending order
+df %>% group_by(Pclass) %>% summarise( Average_Fare= mean(Fare)) %>% arrange(desc( Average_Fare))
+```
+
+
+```{r}
+#find out the record of passenger whose age is maximum
+df%>%arrange(desc(Age,na.rm=T))%>%head(1)
+df %>% slice_max(Age)
+
+```
+
+
+
+
+```{r}
+df %>% slice_max(Fare)
+```
+
+
+```{r}
+
+#sorting grouped data
+df %>% group_by(Gender) %>% arrange(Age, .by_group=T)
+```
+
+
+```{r}
+#find out the average Age of male passengers above 30 years old who travelled Pclass 3 boarding from 'Q' and had at least 
+#1 children on board with them
+
+df<-read.csv("~/DataSets/Titanic.csv",sep = ",",header = T,na.strings = c('') )
+#str(df)
+
+df %>% filter(Gender=='male',Age>30,Pclass==3,Embarked=='Q',Parch>=1) %>% summarise(Average_Age=mean(Age,na.rm = TRUE))
+```
+
+
+```{r}
+
+```
+
+
+```{r}
+```
+

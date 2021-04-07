@@ -1,0 +1,100 @@
+---
+title: "Fundamentals of R"
+output: html_notebook
+---
+
+R is a scientific & statistical computing language
+
+```{r}
+name<-"Harshit" #character
+age<-27 #numeric
+Programmer<-TRUE
+experience<-45.67
+
+```
+
+
+
+```{r}
+paste(name, age,Programmer, experience, sep="\t")
+
+```
+```{r}
+class(name)
+class(age)
+class(experience)
+class(Programmer)
+```
+```{r}
+v1<-c(10,20,30,40) #similar data type 
+v1[3]
+```
+```{r}
+
+m1<-matrix(data=c(1,2,3,4,5,6),nrow = 2,byrow = TRUE)
+m1
+```
+
+
+```{r}
+l1<-list(1,"Harshit",20.34)
+l1
+```
+
+
+```{r}
+is.vector(name)
+is.vector(age)
+is.vector(l1[[1]])
+```
+
+
+```{r}
+data<-"34"
+class(data)
+```
+
+
+```{r}
+
+10 + 20
+```
+
+
+
+```{r}
+10 - 20
+```
+```{r}
+10 * 20
+```
+
+
+```{r}
+10 / 20
+```
+```{r}
+10 %/% 20 #10//20--------> floor division
+```
+
+
+```{r}
+10 ^ 3
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+
+
+

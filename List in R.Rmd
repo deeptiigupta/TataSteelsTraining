@@ -1,0 +1,211 @@
+---
+title: "List Operations"
+output: html_notebook
+---
+```{r}
+employee1=c(name="Harshit",age=27,gender='male')
+employee1
+```
+
+
+```{r}
+
+e1=list(name="Harshit",age=27,gender='male')
+e1
+```
+
+
+```{r}
+e1['age'] #vector of 1 D with index name age, return type is a list!
+```
+
+
+```{r}
+class( e1[['age']] ) #single value. return type is based on data and every value is a vector too!
+```
+
+
+```{r}
+e1['name'] #list
+```
+
+
+```{r}
+e1[['name']] #character value
+```
+
+
+```{r}
+str(e1) #structure
+```
+```{r}
+str(employee1)
+```
+
+
+```{r}
+#a list of 3 vectors
+data<-list(id=c(1,2,3,4,5),name=c('A','B','C','D','E'), age=c(25,27,28,24,25))
+data
+```
+
+
+```{r}
+data[1] #the first entry in the list 'data' is a vector called 'id' which is of type numeric
+```
+
+
+```{r}
+data[1][1] #list in return, same element back
+```
+
+
+```{r}
+data[[1]] [1] #double square bracket will work
+```
+
+
+```{r}
+data[['name']] [1]
+```
+
+
+```{r}
+
+l1<-list(1,2,"Test")
+l2<-list(3,4,'Demo')
+l3<-list(F,T,'Demo')
+nested_list<-list( first=l1, second=l2,third=l3)
+nested_list
+```
+```{r}
+#using named index
+nested_list[['second']][2] #list
+
+nested_list[['second']][[2]] #numeric
+```
+
+
+```{r}
+#using position
+nested_list[[2]][2] #list
+
+nested_list[[2]][[2]] #numeric
+```
+
+
+```{r}
+l3levels<-list( list(list(1,2))  )
+l3levels
+```
+```{r}
+l3levels[[1]][[1]]
+```
+
+
+```{r}
+l1<-list(1,2,"Test")
+l1[4]<-'xyz' #add an entry to a list(append function of python)
+l1
+```
+```{r}
+l1[[3]]<-30
+l1
+```
+
+
+```{r}
+#how to locate multiple values from a list
+
+l1[c(1,2)] #values at position 1 and 2. single bracket----> list in return
+```
+```{r}
+l1[c(-1,-3)] #show all entries apart from 1 and 3
+```
+```{r}
+
+l1[1:3] #slicing a sequence from a list
+```
+
+
+```{r}
+#create a list of 2 entries->first and second with values between 1 to 10 and 11-20 respectively
+```
+
+
+```{r}
+#create a matrix m1 made up of values between 1 to 100 divisible by 10. Arrange it in 5 columns in row wise fashion
+```
+```{r}
+
+#create a vector of values between 3 and 30. Divide all values divisible by 3 with 7 and show the output
+
+v1<-seq(3,30,by=3)
+
+v1[ v1%%3==0 ]/7
+```
+
+
+```{r}
+
+#add 2 vectors of 10 values made up of multiples of 4 and multiples of 3 together. show values greater than 40 in the output
+
+```
+```{r}
+
+v1<-c(1,2,3,45,67,89)
+mean(v1) #average for the all the values
+```
+
+
+```{r}
+v1<-c(1,2,3,45,67,89,NA) #Not available
+mean(v1)
+
+#remove all NA from calculations
+
+mean(v1,na.rm = TRUE)
+```
+
+
+```{r}
+v1<-c(1,2,3,45,67,89,NULL)
+mean(v1)
+```
+
+
+```{r}
+v1<-c(1,2,3,45,67,89,NA) #Not available
+sum(v1)
+
+#remove all NA from calculations
+
+sum(v1,na.rm = TRUE) #total added up
+```
+```{r}
+v1<-c(1,2,3,45,67,89,NA) #Not available
+min(v1)
+
+#remove all NA from calculations
+
+min(v1,na.rm = TRUE) #minimum
+```
+
+
+```{r}
+v1<-c(1,2,3,45,67,89,NA) #Not available
+max(v1)
+
+#remove all NA from calculations
+
+max(v1,na.rm = TRUE) #maximum
+```
+
+```{r}
+length(v1)
+```
+
+
+```{r}
+```
+

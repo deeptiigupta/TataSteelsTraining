@@ -1,0 +1,182 @@
+---
+title: "Data analysis"
+output: html_notebook
+---
+
+```{r}
+df<-read.csv("~/DataSets/Titanic.csv",sep = ",",header = T)
+df
+```
+
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+#number of rows and columns in df
+dim(df)
+```
+
+
+```{r}
+#just for row number
+nrow(df)
+```
+
+
+```{r}
+#just for column number
+ncol(df)
+```
+
+
+```{r}
+#names of the columns(headers)
+
+names(df)
+```
+
+
+```{r}
+
+#first 3 rows from df
+
+head(df,3)
+```
+
+
+```{r}
+#last 3 rows from df
+
+tail(df,3)
+```
+
+
+```{r}
+#information on the columns in df
+
+str(df)
+```
+
+
+```{r}
+#statistical summary
+
+summary(df)
+```
+
+
+```{r}
+#select some columns from df
+
+df %>% select(Age,Fare)
+
+```
+
+
+```{r}
+df %>% select(Age,Fare,Name) %>% head(5)
+
+```
+
+
+```{r}
+df %>% select(Age,Fare,Name)
+
+```
+
+
+```{r}
+
+str(df)
+```
+
+
+```{r}
+df$Gender<-as.factor(df$Gender) #type conversion into factor
+df$Embarked<-as.factor(df$Embarked) #type conversion into factor
+df$Pclass<-as.factor(df$Pclass) #type conversion into factor
+df$SibSp<-as.factor(df$SibSp) #type conversion into factor
+df$Parch<-as.factor(df$Parch) #type conversion into factor
+df$Survived<-as.factor(df$Survived) #type conversion into factor
+
+
+str(df)
+```
+
+
+```{r}
+df$Gender
+```
+
+
+```{r}
+
+#aggregation
+
+#Total Fare
+
+df %>% summarise(  sum(Fare)  )
+df %>% summarise(  Total_Fare=sum(Fare)  ) #column name for result
+
+```
+
+
+```{r}
+#minimum & maximum Age
+
+df %>% summarise( Minimum=min(Age,na.rm = TRUE)  , Maximum=max(Age,na.rm = TRUE)  )
+```
+
+
+```{r}
+
+#average Fare and average Age
+df %>% summarise( Average_Age=mean(Age,na.rm = TRUE)  , Average_Fare=mean(Fare,na.rm = TRUE)  )
+
+```
+
+
+```{r}
+df %>% filter( !is.na(Age)  )  #rows where Age is not null
+```
+```{r}
+
+df %>% filter( Age > 45 )  #rows where Age is not null
+
+```
+
+
+```{r}
+df %>% filter( Age > 50 ) %>% select(Name)  #show names of passengers whose age > 50
+
+```
+
+
+```{r}
+#show the last 5 observations of female passengers with their Name and Age displayed
+df%>%filter(Gender=="female")%>%tail(5)%>%select(Name,Age)
+```
+
+
+```{r}
+#show the last 5 observations of female passengers with their Name and Age displayed
+
+df%>%filter(Gender=="female" & !is.na(Age))%>%tail(5)%>%select(Name,Age)
+
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+

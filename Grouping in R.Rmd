@@ -1,0 +1,132 @@
+---
+title: "Grouping in R"
+output: html_notebook
+---
+
+```{r}
+df<-read.csv("~/DataSets/Titanic.csv",sep = ",",header = T,na.strings = c('') )
+
+df$Gender<-as.factor(df$Gender) #type conversion into factor
+df$Embarked<-as.factor(df$Embarked) #type conversion into factor
+df$Pclass<-as.factor(df$Pclass) #type conversion into factor
+df$SibSp<-as.factor(df$SibSp) #type conversion into factor
+df$Parch<-as.factor(df$Parch) #type conversion into factor
+df$Survived<-as.factor(df$Survived) #type conversion into factor
+
+
+str(df)
+```
+
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+#grouping splitting!
+df %>% group_split(Gender)
+```
+
+
+```{r}
+df %>% group_split(Pclass)
+```
+
+
+```{r}
+#average age of male and female passengers
+#df.groupby(['Gender'])[['Age']].mean()
+df %>% group_by(Gender) %>% summarise( Average_Age=mean(Age,na.rm = T)  )
+```
+
+
+```{r}
+#find the total fare collected and average age of passengers in every Pclass category
+df %>% group_by(Pclass) %>% summarise( Average_Age=mean(Age,na.rm = T),Total_Fare=sum(Fare,na.rm = T)  )
+
+```
+
+
+```{r}
+
+df %>% group_by(Pclass) %>% count()
+```
+
+
+```{r}
+df %>% group_by(Pclass) %>% count(sort = TRUE)
+
+```
+
+
+```{r}
+#multiple features for grouping
+df %>% group_by(Pclass,Gender) %>% count(sort = TRUE)
+
+```
+
+
+```{r}
+#grouping and aggregating by multiple columns
+df %>% group_by(Gender,Pclass) %>% summarise( Average_Age=mean(Age,na.rm = T)  )
+
+```
+
+
+```{r}
+
+#find out the embarked location which contributes the minimum share in Fare collected(unnamed locations contribute minimum)
+df %>% group_by(Embarked) %>% summarise( Total_Fare=sum(Fare,na.rm = T)  ) %>% arrange(desc(Total_Fare)) %>% tail(1)
+
+```
+
+
+```{r}
+df %>% filter(is.na(Embarked)) #this will only work if blank cells have been tagged NA
+```
+
+
+```{r}
+Name<-c("Harshit","John","")
+Age<-c("NOT AVAILABLE",25,26)
+Gender<-c("male","-","female")
+
+df<-data.frame( Name,Age,Gender )
+df
+names(df)
+```
+```{r}
+df$Age[2]
+```
+```{r}
+df$Name[[1]]
+```
+
+
+```{r}
+names(df)
+clean<-function(df){
+    for(col in names(df)){
+      for(idx in 1:nrow(df)){
+          for(missing_val in c("","NOT AVAILABLE","-") ){
+             if( df[col]=="" ){
+               print("YES")
+             }
+          }
+          #if(df$col[idx]==missing_val ){
+           # print(df$col[idx])
+            # df$col[idx]<-NA
+          }
+    }
+    return(df)
+
+    }
+
+
+df<-clean(df)
+df
+
+
+```
+

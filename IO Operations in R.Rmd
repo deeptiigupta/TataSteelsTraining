@@ -1,0 +1,101 @@
+---
+title: "IO Operations"
+output: html_notebook
+---
+```{r}
+print( "harshit" )
+```
+
+
+```{r}
+print( "harshit",27 ) #this will not work. we need one object only
+
+```
+
+
+```{r}
+print( 27.7654321, digits = 8 ) we need one object only
+
+```
+
+
+```{r}
+print( 27.7654321,digits = 5 ) 
+
+```
+
+
+```{r}
+
+#concatenating data from 2 or objects by pasting them next to each other
+
+name<-"Harshit"
+lastName<-"Shukla"
+
+paste(name,lastName) #PASTE WILL NOT INTERPRET WHAT \t DOES
+```
+
+
+```{r}
+cat(name,lastName) #concatenate with no markings, numbers or quotes
+
+```
+
+
+```{r}
+```
+
+
+```{r}
+cat(name,lastName,sep="------") #concatenate with no markings, numbers or quotes
+
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+

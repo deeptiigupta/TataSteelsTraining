@@ -1,0 +1,151 @@
+---
+title: "Date Time Series Operations"
+output: html_notebook
+---
+```{r}
+library(lubridate)
+library(dplyr)
+df<-read.csv("~/DataSets/YESBANK.NS.csv",na.strings = 'null')
+df$Date=ymd(df$Date) #datetime format
+str(df)
+rownames(df)<-df$Date #index assignment is done after this conversion
+df$Date<-NULL
+#str(df)
+```
+```{r}
+df
+```
+
+
+```{r}
+library(dplyr)
+library(lubridate)
+```
+
+
+```{r}
+#find record for a particular date
+df[ '2017-12-11',  ]
+```
+
+
+```{r}
+#multiple indices
+df[ c('2017-12-11','2017-12-13'),  ]
+
+```
+
+
+```{r}
+#multiple indices
+df[ c('2017-12-11','2017-12-13'), c('Open','Low') ]
+```
+
+
+```{r}
+#df.index
+str( rownames(df) )
+```
+
+
+```{r}
+#find out records for January month
+df %>% mutate(M=month(rownames(df))) %>% filter(M==1)
+```
+
+
+```{r}
+#find out records for 2018 Year
+df %>% mutate(Y=year(rownames(df))) %>% filter(Y==2018)
+```
+
+
+```{r}
+#find out records for 2018 & 2019 Years
+df%>%mutate(Y = year(rownames(df)))%>%filter(Y==c(2018,2019))
+```
+
+
+```{r}
+#average closing price in the month of january (all years included)
+df %>% mutate(M=month(rownames(df))) %>% filter(M==1) %>%summarise(average=mean(Close))
+```
+
+
+```{r}
+
+#find the average opening and average closing price for all months in the given data     
+df %>% 
+  mutate(M=month(rownames(df))) %>% 
+  group_by(M) %>% 
+  summarise(Average_Closing=mean(Close,na.rm = TRUE),Average_Opening=mean(Open,na.rm = TRUE))
+```
+```{r}
+
+#all records on or before 2017-12-16
+
+df %>% filter(rownames(df)<='2017-12-16')
+```
+
+#resampling
+```{r}
+df %>% group_by(  year(rownames(df)), month(rownames(df))    ) %>% summarise(count=n())
+```
+```{r}
+#average closing price for every 31 day period
+df %>% group_by(  year(rownames(df)), month(rownames(df))    ) %>% summarise(average=mean(Close))
+
+```
+
+
+```{r}
+#resample by Year
+
+df %>% group_by(Year=year(rownames(df))) %>% summarise(count=n())
+```
+
+
+```{r}
+
+#quarterly resampling
+
+df %>% group_by( Y=year(rownames(df)),Quarter=quarter(rownames(df))   ) %>% summarise(count=n())
+
+#weekly resampling
+```
+
+
+
+
+```{r}
+#1 year has 52 weeks
+df%>%group_by(Y=year(rownames(df)),Weekly=week(rownames(df)))%>%summarise(count = n())
+```
+
+
+```{r}
+
+#df.resample('W').agg('mean')
+
+df%>%group_by(Y=year(rownames(df)),Weekly=week(rownames(df)))%>%summarise_all(funs(mean))
+
+```
+
+
+```{r}
+df %>% group_by( Year= year(rownames(df)), Month= month(rownames(df)), Week=week(rownames(df))) %>%  summarise (count= n())
+```
+
+
+```{r}
+
+#group data of 2018 by month(monthly frequency) and show average value of all columns apart from Volume
+sdf<-df %>% filter( year(rownames(df))==2018 )
+
+sdf%>% group_by(M=month(rownames(sdf),label = T)) %>% summarise_all(funs(mean)) %>% select(c(-Volume,-M))
+```
+
+
+```{r}
+```
+

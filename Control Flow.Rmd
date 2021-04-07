@@ -1,0 +1,68 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+#else has to start from the same line as closing of if
+if( 1 > 2){
+  cat("IF PART")
+}else{
+  cat("ELSE PART")
+}
+```
+
+
+```{r}
+#if else expressions
+if ( 1 < 2 ) cat('IF PART') else cat('ELSE PART')
+```
+
+
+```{r}
+
+if (1 < 5 ){
+  cat("IF PART")
+}else if(2 == 2 ){
+  cat("ELSE IF PART")
+}else{
+  cat("ELSE PART")
+}
+```
+
+
+```{r}
+if (1 < 5 ){
+  cat("IF PART")
+}else if(2 == 2 ){
+  cat("ELSE IF PART")
+}else if(2 !=2 ){
+  cat("SECOND ELSE IF")
+}else{
+  cat("ELSE PART")
+}
+```
+
+
+```{r}
+
+if(1 < 4){
+  if(2> 4){
+    cat("INNER IF")
+  }else{
+    cat("INNER ELSE")
+  }
+}else{
+  cat("OUTER ELSE")
+}
+
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+

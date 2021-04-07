@@ -1,0 +1,48 @@
+---
+title: "Database Joins"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+
+temperature=c(24,25,26,27)
+city=c("Delhi","Mumbai","Kolkata","London")
+df1<-data.frame(temperature,city)
+df1
+```
+```{r}
+humidity=c(40,45,50,27)
+city=c("Delhi","Mumbai","Kolkata","New York")
+df2<-data.frame(humidity,city)
+df2
+```
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+left_join(df1,df2,by='city')
+```
+```{r}
+inner_join(df1,df2,by='city') #inner join gives common values
+
+```
+
+
+```{r}
+right_join(df1,df2,by='city') #right join gives common values + all unique values from second frame
+
+```
+
+
+```{r}
+full_join(df1,df2,by='city')
+```
+```{r}
+read.
+```
